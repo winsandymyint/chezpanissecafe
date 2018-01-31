@@ -1,8 +1,9 @@
 # Chez panisse cafe
 
-This project is for retrieving the restaurants list and booking.
-Using [Open Table API](http://opentable.herokuapp.com)
-version 0.1.0.
+This project is for retrieving the restaurants list.
+User can choose the data/time to book a table.
+Using [Open Table API](http://opentable.herokuapp.com).
+Application version is 0.1.0.
 
 ## Build & development
 Run `npm install`, `bower install`
