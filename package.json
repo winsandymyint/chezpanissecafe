@@ -1,5 +1,5 @@
 {
-  "name": "Chez Panisse Café App",
+  "name": "chezpanissecafe",
   "private": true,
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
