@@ -1,0 +1,107 @@
+<toast></toast>
+<div class="c-dashboard__view ">
+	<div class="c-ds__background ">
+		<div class="c-ds__container">
+			<div class="c-ds__section c-ds__count c-ds__80">
+				<div class="c-ds__metric-container" style="height: 60px;">
+					<!-- choose country list, put at least 3 -->
+					<div class="c-input__container">
+						<div class="c-input__group">
+							<ui-select
+								ng-model="mVm.country"
+								theme="selectize"
+								on-select="mVm.getCitiesBasedOnCountry(mVm.country)"
+								ng-disabled="mVm.bookView"
+								title="Choose a country"
+								append-to-body="true">
+								<ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.name}}</ui-select-match>
+								<ui-select-choices repeat="country in mVm.countries | filter: $select.search">
+									<span ng-bind-html="country.name | highlight: $select.search"></span>
+								</ui-select-choices>
+							</ui-select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="c-ds__section c-ds__count c-ds__20">
+				<p class="c-ds__metric-number" ng-bind="mVm.totalRestaurants"></p>
+				<p class="c-ds__metric-label">restaurants<br>in {{mVm.country.name}}</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="c-project__container" ng-if="mVm.restaurants">
+	<div class="c-project__list c-fade-in"
+		ng-repeat="item in mVm.restaurants"
+		ng-show="!mVm.bookView || (mVm.activeItemId == item.id)"
+		ng-class="{'c-project__list--active': mVm.bookView && (mVm.activeItemId == item.id)}">
+	  <div class="c-project">
+	    <div class="c-project__header">
+	      <img class="c-project__avatar"  ng-src="{{item.image_url}}" >
+	      <div class="g-text__column c-tl__heading" ng-if="!mVm.bookView || (mVm.activeItemId !== item.id)">
+	        <div class="g-text__row g-text__truncate g-text__name">
+						<span class="g-text--strong g-text--link g-text__truncate">{{item.name}}</span>
+					</div>
+					<div class="g-text__row">
+	          <p class="g-text__secondary u-pad__right">{{item.address}}</p>
+	          <span class="g-text__secondary g-text--strong">{{item.city}}</span>
+	        </div>
+	      </div>
+				<div
+					class="g-form__row"
+					ng-if="mVm.bookView && (mVm.activeItemId == item.id)"
+					ng-class="{'g-form__row--active': mVm.bookView && (mVm.activeItemId == item.id)}">
+					<!-- choose number persons -->
+					<div class="b-form__input">
+						<ui-select ng-model="mVm.person.selected" theme="selectize" ng-disabled="mVm.disabled" title="Choose no of person" append-to-body="true">
+							<ui-select-match placeholder="Choose number of person">{{$select.selected}}</ui-select-match>
+							<ui-select-choices repeat="person in mVm.peopleArr | filter: $select.search">
+								<span ng-bind-html="person | highlight: $select.search"></span>
+							</ui-select-choices>
+						</ui-select>
+					</div>
+					<!-- choose date -->
+					<div class="b-form__input">
+						<datepicker date-format="yyyy-MM-dd" selector="form-control" class="b-form__datepicker">
+						    <div class="input-group">
+						        <input class="form-control" placeholder="Choose date"/>
+						    </div>
+						</datepicker>
+					</div>
+					<!-- choose time -->
+					<div class="b-form__input">
+						<ui-select ng-model="mVm.bookingTime.selected" theme="selectize" ng-disabled="mVm.disabled" title="Choose a country" append-to-body="true">
+							<ui-select-match placeholder="Select booking time">{{$select.selected}}</ui-select-match>
+							<ui-select-choices repeat="bookingTime in mVm.timeArr | filter: $select.search">
+								<span ng-bind-html="bookingTime | highlight: $select.search"></span>
+							</ui-select-choices>
+						</ui-select>
+					</div>
+					<div class="g-frame__action" ng-if="mVm.bookView && (mVm.activeItemId == item.id)">
+						<div class="" >
+							<button class="g-button g-button--red" ng-click="mVm.confirmBooking(item.id)">Confirm</button>
+							<button class="g-button g-button--gray" ng-click="mVm.cancelBooking()">Cancel</button>
+						</div>
+					</div>
+	      </div>
+	      <div class="g-frame__action" ng-if="!mVm.bookView || (mVm.activeItemId !== item.id)">
+					<div class="">
+						<button class="g-button g-button--green" ng-click="mVm.changeView(item.id)">Book</button>
+					</div>
+				</div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+<div class="c-pagination__container">
+	<div
+		ng-if="mVm.totalPages > 1"
+		paging
+	  page="mVm.currentPage"
+	  page-size="50"
+	  total="mVm.totalRestaurants"
+	  paging-action="mVm.goToPage(page)">
+	</div>
+</div>

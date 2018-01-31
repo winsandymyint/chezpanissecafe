@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <base href="/">
+    <title>Chez Panisse Café</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="vendor/ngToast/dist/ngToast.css" />
+    <link rel="stylesheet" href="vendor/angularjs-datepicker/dist/angular-datepicker.css" />
+    <link rel="stylesheet" href="vendor/angular-ui-select/dist/select.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/select.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="chezPanisseCafeApp">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div>
+        <div class="c-nav__bar c-nav__bar--fixed">
+            <div class="c-nav__brand" aria-label="Logo">
+                <logo ng-click="chezPanisseCafeApp.logoClick()" class="ng-isolate-scope">
+                    <div class="c-logo__logo">
+                      Restaruant
+                    </div>
+                </logo>
+            </div>
+        </div>
+    </div>
+    <ui-view></ui-view>
+
+    <div class="footer">
+      <div class="container">
+
+      </div>
+    </div>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-animate/angular-animate.js"></script>
+    <script src="vendor/angular-sanitize/angular-sanitize.js"></script>
+    <script src="vendor/ngToast/dist/ngToast.js"></script>
+    <script src="vendor/angular-paging/dist/paging.js"></script>
+    <script src="vendor/angularjs-datepicker/dist/angular-datepicker.js"></script>
+    <script src="vendor/angular-ui-select/dist/select.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="vendor/angular-aria/angular-aria.js"></script>
+    <script src="vendor/angular-touch/angular-touch.js"></script>
+    <script src="vendor/angular-route/angular-route.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <script src="scripts/app.js"></script>
+    <!-- endbuild -->
+    <script src="main/main.config.js"></script>
+    <script src="main/main.controller.js"></script>
+    <script src="services/api.services.js"></script>
+</body>
+</html>

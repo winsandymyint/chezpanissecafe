@@ -1,0 +1,34 @@
+{
+  "name": "chezpanissecafe",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "^1.6.8",
+    "angular-animate": "^1.6.8",
+    "bower": "*",
+    "install": "^1.0.4",
+    "ngToast": "ngtoast#^2.0.0",
+    "angular-paging": "^2.2.2",
+    "angularjs-datepicker": "^2.1.23",
+    "angular-ui-select": "^0.19.8",
+    "angular-ui-router": "^1.0.13",
+    "angular-aria": "^1.6.8",
+    "angular-touch": "^1.6.8",
+    "angular-route": "^1.6.8"
+  },
+  "author": "win sandy myint",
+  "license": "MIT",
+  "devDependencies": {
+    "angular-mocks": "^1.4.0"
+  },
+  "appPath": "chezPanisseCafeApp",
+  "moduleName": "chezPanisseCafeApp",
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
+}
